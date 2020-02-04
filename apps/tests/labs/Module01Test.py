@@ -29,6 +29,7 @@ class Module01Test(unittest.TestCase):
 	Use this to tear down any allocated resources after your tests are complete. This
 	is where you may want to release connections, zero out any long-term data, etc.
 	"""
+ 	
 	def test_checkfloat(self):
 		
 		

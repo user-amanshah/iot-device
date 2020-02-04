@@ -1,1 +1,7 @@
 /config/
+
+#ignore props
+*.props
+
+#ignore cache
+*.pyc
