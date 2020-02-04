@@ -5,7 +5,7 @@ Created on Jan 24, 2020
 '''
 
 
-from .SystemCPUUtilTask import SystemCPUUtilTask
+from  .SystemCPUUtilTask import SystemCPUUtilTask
 from .SystemMemoryUtilTask import SystemMemoryUtilTask
 #from labs.module01.SystemMemoryUtilTask import SystemMemoryUtilTask
 import logging
@@ -20,9 +20,9 @@ class SystemPerformanceAdaptor(object):
             objsysmem= SystemMemoryUtilTask()
              
              
-             """
+            """
              we send out output for 15 times and hence the loop
-             """
+            """
             
             #objsysmem.dae
             for count in range(15):
@@ -41,7 +41,7 @@ class SystemPerformanceAdaptor(object):
                 #logging.info(':INFO: CPU UTILIZATION='+str(objsyscpu.calculatecpuUtil()))
                 
                 """
-                here we need to convert the return type of memory ehich is float"""
+                                                                                                                                                                                                                                                                                                                                                                            here we need to convert the return type of memory ehich is float"""
                 
                 
                 logging.info('MEMORY UTILIZATION='+str(objsysmem.calculateMemory()))
