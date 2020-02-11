@@ -13,6 +13,15 @@ Instructions:
 
 Please note: While some example test cases may be provided, you must write your own for the class.
 """
+
+#from labs.module04.TempSensorAdaptorTask import TempSensorAdaptorTask
+#from labs.module04.TempSensorAdaptor import TempSensorAdaptor
+from labs.module04.SensorDataManager import SensorDataManager
+from labs.module04.TempSensorAdaptorTask import TempSensorAdaptorTask
+from labs.module04.TempSensorAdaptor import TempSensorAdaptor
+
+
+
 class Module03Test(unittest.TestCase):
 
 	"""
@@ -21,20 +30,43 @@ class Module03Test(unittest.TestCase):
 	instances of complex objects, initialize any requisite connections, etc.
 	"""
 	def setUp(self):
-		pass
-
+		#self.adaptor= TempSensorAdaptorTask.getteravg()
+		self.datamanager_avg= SensorDataManager().getteravg()
+		self.datamanager_current= SensorDataManager().gettercurrent()
+		self.datamanager_count= SensorDataManager().gettercount()
+		self.adaptorTask_sensor= TempSensorAdaptorTask()
+		self.sensorAdaptor= TempSensorAdaptor()
 	"""
 	Use this to tear down any allocated resources after your tests are complete. This
 	is where you may want to release connections, zero out any long-term data, etc.
 	"""
 	def tearDown(self):
-		pass
-
+		self.adaptorTask_sensor=None
+		self.datamanager_avg=None
+		self.datamanager_current=None
+		self.datamanager_count=None
+		self.sensorAdaptor=None
+		
 	"""
 	Place your comments describing the test here.
 	"""
-	def testSomething(self):
-		pass
+	def test_avg(self):
+		self.assertTrue(isinstance(self.datamanager_avg, float), "avg is float")
+		
+	def test_current(self):
+		self.assertTrue(isinstance(self.datamanager_current, float), "current value is float")
+		
+		
+	def test_count(self):
+		self.assertTrue(isinstance(self.datamanager_count, int), "current value is float")
+	
+	
+	def test_sensorAdaptortask(self):
+		self.assertTrue(self.adaptorTask_sensor.sensor, "Sensor instance created")
+
+# 	
+		
+	
 
 if __name__ == "__main__":
 	#import sys;sys.argv = ['', 'Test.testName']

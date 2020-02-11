@@ -7,7 +7,7 @@ Created on Feb 1, 2020
 import datetime
 import numpy as np
 import random
-from test.test_audioop import minvalues
+#from test.test_audioop import minvalues
 
 
 class SensorData(object):
@@ -18,13 +18,12 @@ class SensorData(object):
     count=0
     name = ""
     currentval = 0.0
-    minvalue = 0.0
+    
     averageval = 0.0
-    maxval= 0.0
     total = 0.0
     sample = 0
-    maxval=20.0
-    minvalue=30.0
+    maxval=0.0
+    minvalue=1000.0
 #     
    
 
@@ -64,8 +63,14 @@ class SensorData(object):
         return self.total
     def setterTotal(self,total):
         self.total=total
-
+        
+    def gettercurrent(self):
+        return self.currentval
     
+    def settercurrent(self,current):
+        self.currentval=current
+        
+            
     def addvalue(self,newvalue):
         self.count=self.count+1
         self.currentval=newvalue
@@ -88,7 +93,7 @@ class SensorData(object):
              
         if(newvalue < self.minvalue):
             self.minvalue=newvalue
-        #print(str(self.minvalue)+"small")
+#         print(str(self.minvalue)+"small")
              
         if(self.count>0 and newvalue>0):
             #print("-----"+str(self.total))

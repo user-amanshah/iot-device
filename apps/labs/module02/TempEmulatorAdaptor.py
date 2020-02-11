@@ -49,7 +49,7 @@ class TempemulatorAdaptor(object):
             
             if(abs(avg-current)>4):
                 topic="ALert : Sudden Temperature increase above threshold"
-                data="The temperature has suddenly changed to high percent value from average "+str(avg)+"to a sudden change of "+str(current)+"This is an auto generated email"
+                data=formatstring    #"The temperature has suddenly changed to high percent value from average "+str(avg)+"to a sudden change of "+str(current)+"This is an auto generated email"
                 smtpobj.sendemailmethod(topic, data)
                 print("email sent")
                 logging.info("Suddent temperatre change")
