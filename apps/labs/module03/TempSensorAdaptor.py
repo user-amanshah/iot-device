@@ -30,15 +30,16 @@ class TempSensorAdaptor(object):
     def adaptor(self):
         
         result= TempSensorAdaptorTask()
-        [self.avg,self.current_val,self.count,self.max,self.min]=result.run()
-        print(self.count)
-        #formatstring="Temperature:\n\tTime: "+str(datetime.now().isoformat())+"\n\tCurrent: "+str(current)+"\n\tAverage: "+str(avg)+"\n\tSamples :  10\n\tMin: "+str(min)+"\n\tMAX :"+str(max)
-        formatstring="Temperature:\n\tTime: "+str(datetime.now().isoformat())+"\n\tCurrent: "+str(self.current_val)+"\n\tAverage: "+str(self.avg)+"\n\tSamples :  10\n\tMin: "+str(self.min)+"\n\tMAX :"+str(self.max)
-        FORMAT = " %(message)s"
-        logging.basicConfig(level=logging.INFO,format=FORMAT)
-        logging.info(formatstring)
-        time.sleep(0.8)
+        result.run()
         
+#         print(self.count)
+#         #formatstring="Temperature:\n\tTime: "+str(datetime.now().isoformat())+"\n\tCurrent: "+str(current)+"\n\tAverage: "+str(avg)+"\n\tSamples :  10\n\tMin: "+str(min)+"\n\tMAX :"+str(max)
+#         formatstring="Temperature:\n\tTime: "+str(datetime.now().isoformat())+"\n\tCurrent: "+str(self.current_val)+"\n\tAverage: "+str(self.avg)+"\n\tSamples :  10\n\tMin: "+str(self.min)+"\n\tMAX :"+str(self.max)
+#         FORMAT = " %(message)s"
+#         logging.basicConfig(level=logging.INFO,format=FORMAT)
+#         logging.info(formatstring)
+#         time.sleep(0.8)
+#         
         
         
         

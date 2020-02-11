@@ -32,7 +32,7 @@ class SenseHat():
     
     def get_temperature_from_humidity(self):
         # NOTE: This is just a sample
-        print('Random temperature value being generated...')
+        #print('Random temperature value being generated...')
         return round(uniform(18.0, 25.0), 2)
     
     def get_temperature_from_pressure(self):
