@@ -16,9 +16,9 @@ Please note: While some example test cases may be provided, you must write your 
 
 #from labs.module04.TempSensorAdaptorTask import TempSensorAdaptorTask
 #from labs.module04.TempSensorAdaptor import TempSensorAdaptor
-from labs.module04.SensorDataManager import SensorDataManager
-from labs.module04.TempSensorAdaptorTask import TempSensorAdaptorTask
-from labs.module04.TempSensorAdaptor import TempSensorAdaptor
+from labs.module03.SensorDataManager import SensorDataManager
+from labs.module03.TempSensorAdaptorTask import TempSensorAdaptorTask
+from labs.module03.TempSensorAdaptor import TempSensorAdaptor
 
 
 

@@ -4,8 +4,9 @@ Created on Feb 9, 2020
 @author: amanshah
 '''
 
-import threading,random,time
+import threading,random,time,logging
 from labbenchstudios.common import SensorData
+from datetime import datetime
 from labs.module03 import SensorDataManager
 from sense_hat import SenseHat
 #from labbenchstudios.common.SensorData import SensorData
@@ -47,36 +48,50 @@ class TempSensorAdaptorTask(threading.Thread):
         
     
     def run(self):
+        calculateSensorValue(self)
+        
         
         # we start thread to run method continuously 
         
-        data=self.sensor
+
+def calculateSensorValue(self):
+    data=self.sensor
+
+    for i in range(1,4):
+#             temp=self.sense.get_temperature()
+        temp=random.uniform(10.0,20.0)
+        #print(temp)
+        data.addvalue(float(temp))
+        
+        time.sleep(0.2)
+        i+1
+        
+    avg=data.getterAvg()
+    print(avg)
+    current_val= data.gettercurrent()
+    print(current_val)
+    count= data.getterCount()
+    max= data.getterMax()
+    min= data.getterMin()
     
-        for i in range(1,4):
-            #temp=self.sense.get_temperature()
-            temp=random.uniform(10.0,20.0)
-            print(temp)
-            data.addvalue(float(temp))
-            
-            time.sleep(0.2)
-            i+1
-            
-        avg=data.getterAvg()
-        current_val= data.gettercurrent()
-        count= data.getterCount()
-        max= data.getterMax()
-        min= data.getterMin()
-        
-        self.setteravg(avg)
-        self.settercurrent(current_val)
-        
-        
-        
-        #returning data object that contains all temperature paramters
-        print("enterhandleer")
-        print(avg)
-        sensorhandler = SensorDataManager.SensorDataManager
-        self.setterSensor(data)
-        sensorhandler.manager(self,data)
-        
-        return avg,current_val,count,max,min
+    self.setteravg(avg)
+    self.settercurrent(current_val)
+    
+    
+    
+    #returning data object that contains all temperature paramters
+#         print("enterhandleer")
+#         print(avg)
+
+
+    formatstring="Temperature:\n\tTime: "+str(datetime.now().isoformat())+"\n\tCurrent: "+str(current_val)+"\n\tAverage: "+str(avg)+"\n\tSamples :  10\n\tMin: "+str(min)+"\n\tMAX :"+str(max)
+    FORMAT = " %(message)s"
+    logging.basicConfig(level=logging.INFO,format=FORMAT)
+    logging.info(formatstring)
+    time.sleep(0.8)
+    
+    sensorhandler = SensorDataManager.SensorDataManager
+    self.setterSensor(data)
+    sensorhandler.manager(self,data)
+    
+    return avg,current_val,count,max,min

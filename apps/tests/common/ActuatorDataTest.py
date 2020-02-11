@@ -13,7 +13,7 @@ Instructions:
 
 Please note: While some example test cases may be provided, you must write your own for the class.
 """
-from labs.module04.ActuatorData import ActuatorData
+from labs.module03.ActuatorData import ActuatorData
 
 
 class ActuatorDataTest(unittest.TestCase):

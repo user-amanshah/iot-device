@@ -18,9 +18,10 @@ class TempActuatorAdaptor(object):
         '''
          
     def ledActuator(self,command):
+        pattern=SenseHatLed()
         if command=="increase":
-            #self.pattern.increasePattern()
-            print("incled")
+            pattern.increasePattern()
+            #print("command increase")
         elif command=="decrease":
-            #self.pattern.decreasePattern()
-            print("decled")
+            pattern.decreasePattern()
+            #print("command decrease")

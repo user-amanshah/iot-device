@@ -44,16 +44,16 @@ class SMTPemailclass(object):
         msg = MIMEMultipart()
         msg['From'] = fromAddr
         msg['To'] = toAddr
-        msg['Subject'] = topic
-        msgBody = str(data)
+        msg['Subject'] = str("\n"+topic+"\n")
+        msgBody = str("\n"+data+"\n")
         msg.attach(MIMEText(msgBody))
-        msgText = msg.as_string()           #Return the entire message flattened as a string.
+        #msgText = msg.as_string()           #Return the entire message flattened as a string.
         # send e-mail notification
         """
         start smtp server sending instance to send the message 
         """
         smtpServer = smtplib.SMTP(host, port)
-        #smtpServer.set_debuglevel(True)        #set true for debbuging process
+#         smtpServer.set_debuglevel(True)        #set true for debbuging process
         smtpServer.ehlo()
         smtpServer.starttls()
         smtpServer.login(fromAddr, password)

@@ -18,8 +18,8 @@ class SenseHatLed(object):
     
     def increasePattern(self):
         #self.sense.show_letter("+",text_colour=[255,0,0])
-        print("increase matrix")
+        print("+ sign print")
             
     def decreasePattern(self):
         #self.sense.show_letter("-",text_colour=[0,0,255])
-        print("decrease matrix")
+        print("- sign print")

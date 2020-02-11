@@ -77,7 +77,7 @@ class ConfigUtil(object):
       
     def loadconfig(self):
 #         path_var="A:\git-repos\workspace\iot-device\config\ConnectedDevicesConfig.props"
-        load=os.path.isfile(self.path_var)
+        load=os.path.isfile(self.pathvar)
         if load is True:
             return True
         else:
