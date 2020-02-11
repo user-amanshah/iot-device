@@ -15,6 +15,8 @@ class ActuatorData(object):
     command_var=""
     name=""
       
+    """ overrideing default constructor
+    """
     def __init__(self,command_var,value_var,name):
         
         '''
@@ -26,6 +28,10 @@ class ActuatorData(object):
           
     #def updateActuatorData(self,command_var,value_var,name):
       
+      
+    """
+    getters and setters
+    """
     def getcommand(self):
         return self.command_var
       
