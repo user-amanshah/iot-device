@@ -5,6 +5,7 @@ Created on Feb 1, 2020
 '''
 
 from labbenchstudios.common.SensorData import SensorData
+# from labs.module03.SensorDataManager import 
 import random
 
 class TempSensorEmulator(object):
@@ -36,7 +37,7 @@ class TempSensorEmulator(object):
         max= SensorData_obj.maxval
         min = SensorData_obj.minvalue
         current = SensorData_obj.currentval
-        
+         
         return count,avg,max,min,current
     
             

@@ -14,9 +14,10 @@ from labbenchstudios.common.ConfigUtil import ConfigUtil
 
 if __name__ == '__main__':
     
-    
-    obj=TempemulatorAdaptor()
-    obj.adaptor()
+    while True:
+        
+        obj=TempemulatorAdaptor()
+        obj.adaptor()
 
 #     obj=TempSensorEmulator()
 #     obj.sensoremulator()
