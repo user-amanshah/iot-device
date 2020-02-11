@@ -19,7 +19,9 @@ class TempSensorAdaptorTask(threading.Thread):
     avg=0.0
     current=0.0
     sensor=SensorData.SensorData()
-    
+    """
+    setters and getters
+    """
     def getteravg(self):
         return self.avg
     
@@ -38,7 +40,9 @@ class TempSensorAdaptorTask(threading.Thread):
         return self.sensor
         
     
-    
+    """
+    initiate thread in constructor
+    """
     
     def __init__(self):
         '''
@@ -46,20 +50,25 @@ class TempSensorAdaptorTask(threading.Thread):
         '''
         threading.Thread.__init__(self)
         
-    
+    """
+    default method overriding run
+    """
     def run(self):
         calculateSensorValue(self)
         
         
         # we start thread to run method continuously 
         
+"""
+calculate temperature from sensehate
+"""
 
 def calculateSensorValue(self):
     data=self.sensor
 
     for i in range(1,4):
 #             temp=self.sense.get_temperature()
-        temp=random.uniform(10.0,20.0)
+        temp=random.uniform(15.0,30.0)
         #print(temp)
         data.addvalue(float(temp))
         
@@ -67,9 +76,9 @@ def calculateSensorValue(self):
         i+1
         
     avg=data.getterAvg()
-    print(avg)
+    #print(avg)
     current_val= data.gettercurrent()
-    print(current_val)
+    #print(current_val)
     count= data.getterCount()
     max= data.getterMax()
     min= data.getterMin()
@@ -79,10 +88,12 @@ def calculateSensorValue(self):
     
     
     
-    #returning data object that contains all temperature paramters
-#         print("enterhandleer")
-#         print(avg)
 
+
+    """
+    outputing file to console using logging
+    """
+    
 
     formatstring="Temperature:\n\tTime: "+str(datetime.now().isoformat())+"\n\tCurrent: "+str(current_val)+"\n\tAverage: "+str(avg)+"\n\tSamples :  10\n\tMin: "+str(min)+"\n\tMAX :"+str(max)
     FORMAT = " %(message)s"
@@ -92,6 +103,8 @@ def calculateSensorValue(self):
     
     sensorhandler = SensorDataManager.SensorDataManager
     self.setterSensor(data)
+    
+    """ callback fuction """
     sensorhandler.manager(self,data)
     
     return avg,current_val,count,max,min

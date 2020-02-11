@@ -17,6 +17,10 @@ class SensorDataManager(object):
     classdocs
     '''
     
+    
+    """
+    setters and getters and initialization
+    """
     avg=0.0
     count=0
     current_value=0.0
@@ -48,6 +52,11 @@ class SensorDataManager(object):
         Constructor
         '''
         
+        
+        
+    """
+     callbacked function
+    """   
 
    
     def manager(self,sensorvalues):
@@ -60,6 +69,10 @@ class SensorDataManager(object):
         self.setteravg(avg)
         self.settercurrent(current_val)
         
+        """
+        get nominal temp from confg file 
+        
+        """
         
         nominalTemp=int(ConfigUtil().getvalue("device", "nominalTemp"))
         
@@ -68,11 +81,13 @@ class SensorDataManager(object):
         
         formatstring="Temperature:\n\tTime: "+str(datetime.now().isoformat())+"\n\tCurrent: "+str(current_val)+"\n\tAverage: "+str(avg)+"\n\tSamples :  10\n\tMin: "+str(min)+"\n\tMAX :"+str(max)
         time.sleep(0.8)
-        print(formatstring)
+        #print(formatstring)
         topic="ALert : Sudden Temperature increase above threshold"
-        print(topic)
+        #print(topic)
         
-       
+        """
+           check if email is to be sent using avg values
+        """
         if(abs(avg-current_val)>3):
             email=SMTPemailclass()
 #             print(sensorvalues.getterAvg())
@@ -83,28 +98,42 @@ class SensorDataManager(object):
             
             
             email.sendemailmethod(topic, data)
-            #print("email sent")
+            
+            """
+            check if actuator is needed incase temp increases
+            """
+        elif(current_val < nominalTemp):
+            
+#             print(sensorvalues.getterAvg())
+           
+            latest_actuator= ActuatorData("increase", avg, "temperature")
+            print("set increase command")
+            recent_command=latest_actuator.getcommand()
+            print("enter led")
+            """
+            actuation on sensehat
+            set command
+            """
+            TempActuatorAdaptor.ledActuator(self, recent_command)    
+            print("email sent")
+            
+            
+            """
+            check if actuator is needed incase temp increases
+            """
         elif(current_val > nominalTemp):
             latest_actuator= ActuatorData("decrease", avg, "temperature")
             print("set decrease command")
             recent_command=latest_actuator.getcommand()
             print("enter led")
+            """
+            actuation on sensehat
+            set command
+            """
             TempActuatorAdaptor.ledActuator(self, recent_command)
           
             
-        elif(current_val <nominalTemp):
-            email=SMTPemailclass()
-#             print(sensorvalues.getterAvg())
-            formatstring="Temperature:\n\tTime: "+str(datetime.now().isoformat())+"\n\tCurrent: "+str(current_val)+"\n\tAverage: "+str(avg)+"\n\tSamples :  10\n\tMin: "+str(min)+"\n\tMAX :"+str(max)
-            topic="ALert : Sudden Temperature increase above threshold"
-            data=formatstring    #"The temperature has suddenly changed to high percent value from average "+str(avg)+"to a sudden change of "+str(current)+"This is an auto generated email"
-            email.sendemailmethod(topic, data)
-            print("email sent")
-            latest_actuator= ActuatorData("increase", avg, "temperature")
-            print("set increase command")
-            recent_command=latest_actuator.getcommand()
-            print("enter led")
-            TempActuatorAdaptor.ledActuator(self, recent_command)
+        
           
             
 

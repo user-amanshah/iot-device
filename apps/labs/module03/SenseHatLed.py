@@ -15,11 +15,17 @@ class SenseHatLed(object):
         '''
         Constructor
         '''
+    """
+    show +  on led 
+    """
     
     def increasePattern(self):
         #self.sense.show_letter("+",text_colour=[255,0,0])
         print("+ sign print")
-            
+           
+    """
+    show - on led 
+    """
     def decreasePattern(self):
         #self.sense.show_letter("-",text_colour=[0,0,255])
         print("- sign print")

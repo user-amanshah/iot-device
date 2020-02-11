@@ -14,11 +14,10 @@ class TempSensorAdaptor(object):
     '''
     classdocs
     '''
-    avg=0.0
-    current_val=0.0
-    count=0
-    max=0.0
-    min=0.0
+
+    """
+    call tempsensordaptortask class
+    """ 
     
     
 
