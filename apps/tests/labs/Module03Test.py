@@ -58,7 +58,7 @@ class Module03Test(unittest.TestCase):
 		
 		
 	def test_count(self):
-		self.assertTrue(isinstance(self.datamanager_count, int), "current value is float")
+		self.assertTrue(self.datamanager_count is int, "current value is float")
 	
 	
 	def test_sensorAdaptortask(self):
