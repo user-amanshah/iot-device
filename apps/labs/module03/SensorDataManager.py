@@ -100,20 +100,20 @@ class SensorDataManager(object):
             email.sendemailmethod(topic, data)
             
             """
-            check if actuator is needed incase temp increases
+            check if actuator is needed incase temp decreases
             """
         elif(current_val < nominalTemp):
             
 #             print(sensorvalues.getterAvg())
-           
-            latest_actuator= ActuatorData("increase", avg, "temperature")
-            print("set increase command")
-            recent_command=latest_actuator.getcommand()
-            print("enter led")
             """
             actuation on sensehat
             set command
             """
+            latest_actuator= ActuatorData("increase", avg, "temperature")
+            print("set increase command")
+            recent_command=latest_actuator.getcommand()
+            print("enter led")
+            
             TempActuatorAdaptor.ledActuator(self, recent_command)    
             print("email sent")
             
@@ -122,14 +122,15 @@ class SensorDataManager(object):
             check if actuator is needed incase temp increases
             """
         elif(current_val > nominalTemp):
-            latest_actuator= ActuatorData("decrease", avg, "temperature")
-            print("set decrease command")
-            recent_command=latest_actuator.getcommand()
-            print("enter led")
             """
             actuation on sensehat
             set command
             """
+            latest_actuator= ActuatorData("decrease", avg, "temperature")
+            print("set decrease command")
+            recent_command=latest_actuator.getcommand()
+            print("enter led")
+            
             TempActuatorAdaptor.ledActuator(self, recent_command)
           
             
