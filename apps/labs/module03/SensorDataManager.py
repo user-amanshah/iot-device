@@ -6,7 +6,7 @@ Created on Feb 9, 2020
 from datetime import datetime
 import time
 
-from labs.module03.ActuatorData import ActuatorData
+from labbenchstudios.common.ActuatorData import ActuatorData
 from labs.module03.TempSensorAdaptor import TempSensorAdaptor
 from labs.module03.TempActuatorAdaptor import TempActuatorAdaptor
 from labs.module02.SmtpClientConnector import SMTPemailclass
