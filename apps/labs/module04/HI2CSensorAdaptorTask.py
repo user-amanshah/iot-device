@@ -82,7 +82,7 @@ def calculatehumidity(self):
     H0coeff=i2Cobj.read_byte_data(i2c_humidity_hts211,0x30)
     H1coeff=i2Cobj.read_byte_data(i2c_humidity_hts211,0x31)
     
-    H0_RH=H0coeff/2
+    H0_RH=H0coeff/2  >>2
     H1_RH=H1coeff/2
     
     #Read the value of H0_T0_OUT from registers 0x36 & 0x37
