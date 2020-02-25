@@ -14,7 +14,7 @@ class SensorData(object):
     '''
     classdocs
     '''
-    time1=0
+    time=0
     count=0
     name = ""
     currentval = 0.0
