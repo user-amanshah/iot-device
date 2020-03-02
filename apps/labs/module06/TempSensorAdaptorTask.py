@@ -38,7 +38,6 @@ class TempSensorAdaptorTask(threading.Thread):
         
     def getterSensor(self):
         return self.sensor
-        
     
     """
     initiate thread in constructor
@@ -86,25 +85,20 @@ def calculateSensorValue(self):
     self.setteravg(avg)
     self.settercurrent(current_val)
     
-    
-    
-
-
     """
     outputing file to console using logging
     """
     
-
     formatstring="Temperature:\n\tTime: "+str(datetime.now().isoformat())+"\n\tCurrent: "+str(current_val)+"\n\tAverage: "+str(avg)+"\n\tSamples :  10\n\tMin: "+str(min)+"\n\tMAX :"+str(max)
     FORMAT = " %(message)s"
     logging.basicConfig(level=logging.INFO,format=FORMAT)
     logging.info(formatstring)
     time.sleep(0.8)
     
-    
     self.setterSensor(data)
     
     """ callback fuction """
+    # we send sensor data to publish via broker
 #     sensorhandler.manager(self,data)
     publishing_obj = MqttClientConnector()
     publishing_obj.publish_sensor_data(data)
