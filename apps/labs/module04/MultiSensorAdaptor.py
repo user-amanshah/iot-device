@@ -1,4 +1,5 @@
-from labs.module04.TempSensorAdaptorTask import TempSensorAdaptorTask
+
+
 from labs.module04.HI2CSensorAdaptorTask import HI2CSensorAdaptorTask
 from labs.module04.HumiditySensorAdaptorTask import HumiditySensorAdaptorTask
 import logging,time,math
