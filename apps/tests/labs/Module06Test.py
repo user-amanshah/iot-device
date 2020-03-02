@@ -1,6 +1,8 @@
 import unittest
 
-
+from labs.module06.MqttClientConnector import MqttClientConnector
+from labbenchstudios.common.SensorData import SensorData
+from tkinter.constants import NO
 """
 Test class for all requisite Module06 functionality.
 
@@ -21,21 +23,37 @@ class Module06Test(unittest.TestCase):
 	instances of complex objects, initialize any requisite connections, etc.
 	"""
 	def setUp(self):
-		pass
+		"""set up all the labs and labbenchstudios classes """
+		#initialize mqtt and sensor data
+		
+		self.mqtt_obj = MqttClientConnector()
+		self.sensor_obj = SensorData()
+		
 
 	"""
 	Use this to tear down any allocated resources after your tests are complete. This
 	is where you may want to release connections, zero out any long-term data, etc.
 	"""
 	def tearDown(self):
-		pass
+		"""set initialize variables as none to destroy/"""
+		self.mqtt_obj= None
+		self.sensor_obj= None
 
 	"""
 	Place your comments describing the test here.
 	"""
-	def testSomething(self):
-		pass
-
+	def test_connection(self):
+		"""check if connection of mqtt is susccess"""
+		self.assertTrue(self.mqtt_obj.on_connect("","",0), "connection suceess")
+		
+	def test_publishing(self):
+		"""check if publish is success"""
+		self.assertTrue(self.mqtt_obj.publish_sensor_data(self.sensor_obj))
+		
+	def test_disconnect(self):
+		self.assertTrue(self.mqtt_obj.on_disconnect("",0), "its disconnected")
+	
+	
 if __name__ == "__main__":
 	#import sys;sys.argv = ['', 'Test.testName']
 	unittest.main()

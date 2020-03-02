@@ -7,8 +7,8 @@ Created on Feb 9, 2020
 import threading,random,time,logging
 from labbenchstudios.common.SensorData import SensorData
 from datetime import datetime
-#from labs.module04.SensorDataManager import SensorDataManager
 from sense_hat import SenseHat
+from labs.module06.MqttClientConnector import MqttClientConnector
 #from labbenchstudios.common.SensorData import SensorData
 
 class TempSensorAdaptorTask(threading.Thread):
@@ -101,10 +101,12 @@ def calculateSensorValue(self):
     logging.info(formatstring)
     time.sleep(0.8)
     
-    sensorhandler = SensorDataManager()
+    
     self.setterSensor(data)
     
     """ callback fuction """
-    sensorhandler.manager(self,data)
-    
+#     sensorhandler.manager(self,data)
+    publishing_obj = MqttClientConnector()
+    publishing_obj.publish_sensor_data(data)
+    print(str(data.getterAvg())+"sensor")
     return avg,current_val,count,max,min

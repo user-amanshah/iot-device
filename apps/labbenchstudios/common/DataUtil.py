@@ -15,7 +15,7 @@ class DataUtil (object):
     '''
 
 
-    def __init__(self, params):
+    def __init__(self):
         '''
         Constructor
         '''
@@ -25,7 +25,7 @@ class DataUtil (object):
     def tojsonfromSensorData(self,sensor):
         print("values from sensor data")
         json_vr={}
-        json_vr["timestamp"]=datetime.utcnow()
+        json_vr["timestamp"]=str(datetime.utcnow())
         json_vr["avg"]=sensor.getterAvg()
         json_vr["current"]=sensor.gettercurrent() 
         json_vr["max"]=sensor.getterMax()
