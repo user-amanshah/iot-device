@@ -65,7 +65,7 @@ class MqttClientConnector(object):
             
             self.client_obj.loop_stop()
             return False
-        
+        #disconnect from broker
     def on_disconnect(self,client,rc_flag):
         print("Disconnected the session :"+str(rc_flag))
         try:
