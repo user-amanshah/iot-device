@@ -35,14 +35,16 @@ class Module08Test(unittest.TestCase):
 	"""
 	Place your comments describing the test here.
 	"""
-	def testMqttSubscribe(self):
+	def test_MqttSubscribetest(self):
 		
 		i=2
 		while(i!=0):
 			self.connector.connect(None, None)
 			sleep(1)
+			#subscribe to topic
 			self.connector.subscibetoTopic("mqtt_topic")
 			sleep(8)
+			#subscribe to unsubscribe
 			self.connector.unsubscibefromTopic("mqtt_topic")
 			self.connector.disconnect()
 			i=i-1
