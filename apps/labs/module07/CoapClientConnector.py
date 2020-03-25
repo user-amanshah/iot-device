@@ -12,7 +12,7 @@ class CoapClientConnector(object):
         set up host port and path name
         '''
         self.host = host
-        self.port = port
+        self.port_number = port
         self.path = path
         self.client_obj = HelperClient(server=(host, port))
     

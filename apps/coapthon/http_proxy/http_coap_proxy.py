@@ -71,7 +71,7 @@ class CoapUri:  # this class takes the URI from the HTTP URI
     """ Class that can manage and inbox the CoAP URI """
     def __init__(self, coap_uri):
         self.uri = coap_uri
-        self.host, self.port, self.path = parse_uri(coap_uri)
+        self.host, self.port_number, self.path = parse_uri(coap_uri)
 
     def get_uri_as_list(self):
         """
@@ -120,7 +120,7 @@ class HCProxyHandler(BaseHTTPRequestHandler):
             # the requests asks for "http://127.0.0.1:8080:/another_hc_path/"
             return
         self.set_coap_uri()
-        self.client_obj = HelperClient(server=(self.coap_uri.host, self.coap_uri.port))
+        self.client_obj = HelperClient(server=(self.coap_uri.host, self.coap_uri.port_number))
 
     def do_GET(self):
         """

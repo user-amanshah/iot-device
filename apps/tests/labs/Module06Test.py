@@ -1,6 +1,6 @@
 import unittest
 
-from labs.module06.MqttClientConnector import MqttClientConnector
+from labs.module06.MqttClientConnector import Mqttclientconnector
 from labbenchstudios.common.SensorData import SensorData
 from tkinter.constants import NO
 """
@@ -26,7 +26,7 @@ class Module06Test(unittest.TestCase):
 		"""set up all the labs and labbenchstudios classes """
 		#initialize mqtt and sensor data
 		
-		self.mqtt_obj = MqttClientConnector()
+		self.mqtt_obj = Mqttclientconnector()
 		self.sensor_obj = SensorData()
 		
 

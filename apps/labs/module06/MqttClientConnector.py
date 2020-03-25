@@ -10,7 +10,7 @@ import time
 from numpy.distutils.fcompiler import none
 
 
-class MqttClientConnector(object):
+class Mqttclientconnector(object):
     '''
     mqtt code that is required to invoke paho library for publishing 
     message on channel

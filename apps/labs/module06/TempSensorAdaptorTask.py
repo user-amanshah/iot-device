@@ -8,7 +8,7 @@ import threading,random,time,logging
 from labbenchstudios.common.SensorData import SensorData
 from datetime import datetime
 from sense_hat import SenseHat
-from labs.module06.MqttClientConnector import MqttClientConnector
+from labs.module06.MqttClientConnector import Mqttclientconnector
 #from labbenchstudios.common.SensorData import SensorData
 
 class TempSensorAdaptorTask(threading.Thread):
@@ -100,7 +100,7 @@ def calculateSensorValue(self):
     """ callback fuction """
     # we send sensor data to publish via broker
 #     sensorhandler.manager(self,data)
-    publishing_obj = MqttClientConnector()
+    publishing_obj = Mqttclientconnector()
     publishing_obj.publish_sensor_data(data)
     print(str(data.getterAvg())+"sensor")
     return avg,current_val,count,max,min
